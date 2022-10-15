@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileExample {
@@ -37,26 +38,19 @@ public class FileExample {
   See the File documentation here: https://docs.oracle.com/javase/8/docs/api/java/io/File.html
 
   */
-  static File getFile(File start) throws IOException {
 
-    return null;
-  }
+  static List<File> result = new ArrayList<>();  
 
 	static List<File> getFiles(File start) throws IOException {
 	  File f = start;
-	  List<File> result = new ArrayList<>();
     if(f.isDirectory()) {
-      while(f.isDirectory()) {
-        File[] paths = f.listFiles();
-        for(File file: paths) {
-          if(file.isDirectory()) {
-            f = file;
-          }
-          else {
-            result.add(file);
-            f = file;
-          }
-          
+      File[] paths = f.listFiles();
+      for(File subfile: paths) {
+        if(subfile.isDirectory()) {
+          getFiles(subfile);
+        }
+        else {
+          result.add(subfile);
         }
       }
     }
