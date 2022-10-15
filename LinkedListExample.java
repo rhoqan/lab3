@@ -26,6 +26,7 @@ class LinkedList {
      * Adds the value to the _end_ of the list
      * @param value
      */
+    
     public void append(int value) {
         if(this.root == null) {
             this.root = new Node(value, null);

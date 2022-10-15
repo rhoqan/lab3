@@ -37,19 +37,35 @@ public class FileExample {
   See the File documentation here: https://docs.oracle.com/javase/8/docs/api/java/io/File.html
 
   */
+  static File getFile(File start) throws IOException {
+
+    return null;
+  }
 
 	static List<File> getFiles(File start) throws IOException {
 	  File f = start;
 	  List<File> result = new ArrayList<>();
-	  result.add(start);
-	  if(f.isDirectory()) {
-      File[] paths = f.listFiles();
-      for(File subFile: paths) {
-        result.add(subFile);
+    if(f.isDirectory()) {
+      while(f.isDirectory()) {
+        File[] paths = f.listFiles();
+        for(File file: paths) {
+          if(file.isDirectory()) {
+            f = file;
+          }
+          else {
+            result.add(file);
+            f = file;
+          }
+          
+        }
       }
-	  }
+    }
+    else {
+      result.add(start);
+    }
 	  return result;
 	}
 }
+
 
 
