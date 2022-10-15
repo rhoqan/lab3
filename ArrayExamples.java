@@ -32,9 +32,9 @@ public class ArrayExamples {
     for(double num: arr) {
       if(num < lowest) { lowest = num; }
     }
-    double sum = 0;
+    double sum = lowest * -1;
     for(double num: arr) {
-      if(num != lowest) { sum += num; }
+      if(num >= lowest) { sum += num; }
     }
     return sum / (arr.length - 1);
   }

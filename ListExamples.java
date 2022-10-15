@@ -3,6 +3,12 @@ import java.util.List;
 
 interface StringChecker { boolean checkString(String s); }
 
+class ContainsDStringChecker implements StringChecker {
+  public boolean checkString(String s) {
+    return s.contains("d");
+  }
+}
+
 class ListExamples {
 
   // Returns a new list that has all the elements of the input list for which
@@ -12,7 +18,7 @@ class ListExamples {
     List<String> result = new ArrayList<>();
     for(String s: list) {
       if(sc.checkString(s)) {
-        result.add(0, s);
+        result.add(s);
       }
     }
     return result;
@@ -25,7 +31,7 @@ class ListExamples {
     List<String> result = new ArrayList<>();
     int index1 = 0, index2 = 0;
     while(index1 < list1.size() && index2 < list2.size()) {
-      if(list1.get(index1).compareTo(list2.get(index2)) < 0) {
+      if(list1.get(index1).compareTo(list2.get(index2)) < 0 ) {
         result.add(list1.get(index1));
         index1 += 1;
       }
@@ -40,7 +46,7 @@ class ListExamples {
     }
     while(index2 < list2.size()) {
       result.add(list2.get(index2));
-      index1 += 1;
+      index2 += 1;
     }
     return result;
   }
